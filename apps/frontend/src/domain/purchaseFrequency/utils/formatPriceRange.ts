@@ -1,4 +1,4 @@
-import { PurchaseFrequencyClient } from '@/apis/purchaseApi'
+import { PurchaseFrequencyClient } from '../apis/purchaseApi'
 
 export const formatPriceRange = (range: PurchaseFrequencyClient['range']): string => {
   if (range.end === null) {

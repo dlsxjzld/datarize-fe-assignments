@@ -1,4 +1,4 @@
-import { PurchaseFrequencySection } from '@/components/PurchaseFrequency/PurchaseFrequencySection'
+import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import { useState } from 'react'
 
 const DashBoard = () => {

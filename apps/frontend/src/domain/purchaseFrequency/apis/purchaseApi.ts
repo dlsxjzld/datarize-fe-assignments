@@ -1,4 +1,4 @@
-import { apiGet } from './apis'
+import { apiGet } from '@/common/apis/apis'
 
 export type DateRange = {
   from: string
@@ -40,5 +40,4 @@ export const fetchPurchaseFrequency = async (params: DateRange): Promise<Purchas
   })
 
   return normalizePurchaseFrequency(data)
-}
 }

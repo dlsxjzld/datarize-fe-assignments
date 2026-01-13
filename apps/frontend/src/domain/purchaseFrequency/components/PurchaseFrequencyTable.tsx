@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { usePurchaseFrequency } from '../../hooks/usePurchaseFrequency'
-import { formatPriceRange } from '../../utils/formatPriceRange'
+import { usePurchaseFrequency } from '../hooks/usePurchaseFrequency'
+import { formatPriceRange } from '../utils/formatPriceRange'
 
 interface PurchaseFrequencyTableProps {
   from: string
