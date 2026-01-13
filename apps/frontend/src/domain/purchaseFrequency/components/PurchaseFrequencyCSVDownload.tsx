@@ -22,6 +22,11 @@ const PurchaseFrequencyCSVDownload = ({ from, to }: PurchaseFrequencyCSVDownload
 export default PurchaseFrequencyCSVDownload
 
 const StyledCSVLink = styled(CSVLink)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 36px;
   padding: 8px 16px;
   background-color: #3b82f6;
   color: white;
@@ -29,6 +34,7 @@ const StyledCSVLink = styled(CSVLink)`
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
+  box-sizing: border-box;
   transition: background-color 0.2s;
 
   &:hover {
