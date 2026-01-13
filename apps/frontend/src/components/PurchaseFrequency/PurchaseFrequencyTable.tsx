@@ -35,18 +35,18 @@ const PurchaseFrequencyTable = ({ from, to }: PurchaseFrequencyTableProps) => {
 
 export default PurchaseFrequencyTable
 
-const Container = styled.section`
+export const Container = styled.section`
   margin: 32px 0;
 `
 
-const Title = styled.h2`
+export const Title = styled.h2`
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
   color: #1a202c;
 `
 
-const Table = styled.table`
+export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   background-color: white;
@@ -55,11 +55,11 @@ const Table = styled.table`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 `
 
-const Thead = styled.thead`
+export const Thead = styled.thead`
   background-color: #f7fafc;
 `
 
-const Th = styled.th`
+export const Th = styled.th`
   padding: 12px 16px;
   text-align: left;
   font-size: 14px;
@@ -68,7 +68,7 @@ const Th = styled.th`
   border-bottom: 2px solid #e2e8f0;
 `
 
-const Td = styled.td`
+export const Td = styled.td`
   padding: 12px 16px;
   font-size: 14px;
   color: #2d3748;
