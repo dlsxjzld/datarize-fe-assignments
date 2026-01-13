@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import PurchaseFrequencyTable from '@/components/PurchaseFrequency/PurchaseFrequencyTable'
+import { useState, Suspense } from 'react'
 
 const DashBoard = () => {
   const [dateRange, setDateRange] = useState({
@@ -12,6 +13,10 @@ const DashBoard = () => {
       <p>
         기간: {dateRange.from} ~ {dateRange.to}
       </p>
+
+      <Suspense fallback={<div>로딩 중...</div>}>
+        <PurchaseFrequencyTable from={dateRange.from} to={dateRange.to} />
+      </Suspense>
     </main>
   )
 }
