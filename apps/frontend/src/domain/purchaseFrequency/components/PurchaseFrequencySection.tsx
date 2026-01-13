@@ -4,7 +4,7 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 import { ErrorFallback } from '@/common/components/ErrorFallback'
 import PurchaseFrequencyTable from './PurchaseFrequencyTable'
 import PurchaseFrequencySkeleton from './PurchaseFrequencySkeleton'
-import { DateRange } from '../apis/purchaseApi'
+import type { DateRange } from '../apis/purchaseApi'
 
 export const PurchaseFrequencySection = ({ from, to }: DateRange) => {
   const { reset } = useQueryErrorResetBoundary()
