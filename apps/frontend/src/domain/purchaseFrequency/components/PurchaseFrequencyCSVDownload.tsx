@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { CSVLink } from 'react-csv'
 import { usePurchases } from '../hooks/usePurchases'
+import { formatPurchaseCSV } from '../utils/formatPurchaseCSV'
 
 interface PurchaseFrequencyCSVDownloadProps {
   from: string
@@ -9,14 +10,7 @@ interface PurchaseFrequencyCSVDownloadProps {
 
 const PurchaseFrequencyCSVDownload = ({ from, to }: PurchaseFrequencyCSVDownloadProps) => {
   const { data } = usePurchases({ from, to })
-
-  const csvData = data.map((purchase) => ({
-    날짜: purchase.date,
-    고객명: purchase.customerName,
-    제품명: purchase.productName,
-    가격: purchase.price,
-    수량: purchase.quantity,
-  }))
+  const csvData = formatPurchaseCSV(data)
 
   return (
     <StyledCSVLink data={csvData} filename={`구매 데이터-${from}-${to}.csv`}>
