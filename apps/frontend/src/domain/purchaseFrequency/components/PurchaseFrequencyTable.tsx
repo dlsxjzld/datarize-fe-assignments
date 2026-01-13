@@ -11,40 +11,26 @@ const PurchaseFrequencyTable = ({ from, to }: PurchaseFrequencyTableProps) => {
   const { data } = usePurchaseFrequency({ from, to })
 
   return (
-    <Container>
-      <Title>가격대별 구매 빈도</Title>
-      <Table>
-        <Thead>
-          <tr>
-            <Th>가격대</Th>
-            <Th>구매 횟수</Th>
-          </tr>
-        </Thead>
-        <tbody>
-          {data.map((item) => (
-            <Tr key={`${item.range.start}-${item.range.end}`}>
-              <Td>{formatPriceRange(item.range)}</Td>
-              <Td>{item.count.toLocaleString()}건</Td>
-            </Tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
+    <Table>
+      <Thead>
+        <tr>
+          <Th>가격대</Th>
+          <Th>구매 횟수</Th>
+        </tr>
+      </Thead>
+      <tbody>
+        {data.map((item) => (
+          <Tr key={`${item.range.start}-${item.range.end}`}>
+            <Td>{formatPriceRange(item.range)}</Td>
+            <Td>{item.count.toLocaleString()}건</Td>
+          </Tr>
+        ))}
+      </tbody>
+    </Table>
   )
 }
 
 export default PurchaseFrequencyTable
-
-export const Container = styled.section`
-  margin: 32px 0;
-`
-
-export const Title = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
-  color: #1a202c;
-`
 
 export const Table = styled.table`
   width: 100%;

@@ -1,28 +1,25 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Container, Title, Table, Thead, Th, Td } from './PurchaseFrequencyTable'
+import { Table, Thead, Th, Td } from './PurchaseFrequencyTable'
 
 const PurchaseFrequencySkeleton = () => {
   return (
-    <Container>
-      <SkeletonTitle />
-      <Table>
-        <Thead>
-          <tr>
-            <SkeletonTh />
-            <SkeletonTh />
+    <Table>
+      <Thead>
+        <tr>
+          <SkeletonTh />
+          <SkeletonTh />
+        </tr>
+      </Thead>
+      <tbody>
+        {[...Array(10)].map((_, index) => (
+          <tr key={index}>
+            <SkeletonTd />
+            <SkeletonTd />
           </tr>
-        </Thead>
-        <tbody>
-          {[...Array(10)].map((_, index) => (
-            <tr key={index}>
-              <SkeletonTd />
-              <SkeletonTd />
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
+        ))}
+      </tbody>
+    </Table>
   )
 }
 
@@ -35,15 +32,6 @@ const shimmer = keyframes`
   100% {
     background-position: 200% 0;
   }
-`
-
-const SkeletonTitle = styled(Title)`
-  width: 180px;
-  height: 24px;
-  background: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
-  background-size: 200% 100%;
-  animation: ${shimmer} 1.5s infinite;
-  border-radius: 4px;
 `
 
 const SkeletonTh = styled(Th)`
