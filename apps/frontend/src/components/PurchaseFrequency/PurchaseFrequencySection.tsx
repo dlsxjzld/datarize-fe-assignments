@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 import { ErrorFallback } from '../common/ErrorFallback'
 import PurchaseFrequencyTable from './PurchaseFrequencyTable'
+import PurchaseFrequencySkeleton from './PurchaseFrequencySkeleton'
 import type { DateRange } from '../../apis/purchaseApi'
 
 export const PurchaseFrequencySection = ({ from, to }: DateRange) => {
@@ -10,7 +11,7 @@ export const PurchaseFrequencySection = ({ from, to }: DateRange) => {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
-      <Suspense fallback={<div>로딩 중...</div>}>
+      <Suspense fallback={<PurchaseFrequencySkeleton />}>
         <PurchaseFrequencyTable from={from} to={to} />
       </Suspense>
     </ErrorBoundary>
