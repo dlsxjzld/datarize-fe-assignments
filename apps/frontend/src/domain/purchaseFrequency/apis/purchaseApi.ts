@@ -41,3 +41,34 @@ export const fetchPurchaseFrequency = async (params: DateRange): Promise<Purchas
 
   return normalizePurchaseFrequency(data)
 }
+
+interface PurchaseServer {
+  date: string
+  customerName: string
+  productName: string
+  price: number
+  quantity: number
+}
+
+export interface PurchaseClient {
+  date: string
+  customerName: string
+  productName: string
+  price: number
+  quantity: number
+}
+
+const normalizePurchases = (data: PurchaseServer[]): PurchaseClient[] => {
+  return data.map((item) => ({
+    ...item,
+  }))
+}
+
+export const fetchPurchases = async (params: DateRange) => {
+  const data = await apiGet<PurchaseServer[]>({
+    endpoint: '/api/purchases',
+    params,
+  })
+
+  return normalizePurchases(data)
+}
