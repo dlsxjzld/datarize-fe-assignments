@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { usePurchaseFrequency } from '../../hooks/usePurchaseFrequency'
+import { formatPriceRange } from '../../utils/formatPriceRange'
 
 interface PurchaseFrequencyTableProps {
   from: string
@@ -22,11 +23,7 @@ const PurchaseFrequencyTable = ({ from, to }: PurchaseFrequencyTableProps) => {
         <tbody>
           {data.map((item) => (
             <Tr key={`${item.range.start}-${item.range.end}`}>
-              <Td>
-                {item.range.end === null
-                  ? `${item.range.start.toLocaleString()}원 이상`
-                  : `${item.range.start.toLocaleString()}원 ~ ${item.range.end.toLocaleString()}원`}
-              </Td>
+              <Td>{formatPriceRange(item.range)}</Td>
               <Td>{item.count.toLocaleString()}건</Td>
             </Tr>
           ))}
