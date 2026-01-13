@@ -1,40 +1,11 @@
-import { useState } from 'react'
 import styled from '@emotion/styled'
 import DateRangePicker from '../domain/purchaseFrequency/components/DateRangePicker'
 import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
+import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
 
 const DashBoard = () => {
-  const [dateRange, setDateRange] = useState({
-    from: '2025-10-01',
-    to: '2025-12-31',
-  })
-
-  const handleFromChange = (newFrom: string) => {
-    if (!newFrom) {
-      return
-    }
-
-    if (newFrom > dateRange.to) {
-      setDateRange({ from: dateRange.to, to: newFrom })
-      return
-    }
-
-    setDateRange({ from: newFrom, to: dateRange.to })
-  }
-
-  const handleToChange = (newTo: string) => {
-    if (!newTo) {
-      return
-    }
-
-    if (newTo < dateRange.from) {
-      setDateRange({ from: newTo, to: dateRange.from })
-      return
-    }
-
-    setDateRange({ from: dateRange.from, to: newTo })
-  }
+  const { dateRange, handleFromChange, handleToChange } = useDateRange('2025-10-01', '2025-12-31')
 
   return (
     <main>
