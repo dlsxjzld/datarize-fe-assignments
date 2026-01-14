@@ -3,8 +3,8 @@ import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import Spinner from '@/common/components/Spinner'
 import { ErrorFallback } from '@/common/components/ErrorFallback'
-import { Customer } from '../../hooks/useSelectedCustomer'
-import PurchaseContent from './PurchaseContent'
+import { Customer } from '../hooks/useSelectedCustomer'
+import CustomerPurchaseContent from './CustomerPurchaseDetailContent'
 
 interface CustomerPurchaseDetailSectionProps {
   customer: Customer
@@ -24,7 +24,7 @@ const CustomerPurchaseDetailSection = ({ customer, dateRange, reset }: CustomerP
             </LoadingContainer>
           }
         >
-          <PurchaseContent customer={customer} dateRange={dateRange} />
+          <CustomerPurchaseContent customer={customer} dateRange={dateRange} />
         </Suspense>
       </ErrorBoundary>
     </Content>

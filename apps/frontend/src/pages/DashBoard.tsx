@@ -8,7 +8,7 @@ import CustomerListSection from '../domain/customer/components/CustomerListSecti
 import { Customer, useSelectedCustomer } from '../domain/customer/hooks/useSelectedCustomer'
 import { useModal } from '@/common/hooks/useModal'
 import { useCallback } from 'react'
-import CustomerPurchaseDetailModal from '../domain/customer/components/CustomerPurchaseDetailModal'
+import CustomerPurchaseDetailModal from '@/domain/customer/components/CustomerPurchaseDetailModal'
 
 const DashBoard = () => {
   const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')

@@ -8,11 +8,11 @@ interface Purchase {
   imgSrc: string
 }
 
-interface CustomerPurchaseListProps {
+interface CustomerPurchaseDetailListProps {
   purchases: Purchase[]
 }
 
-const PurchaseItem = ({ purchase }: { purchase: Purchase }) => {
+const CustomerPurchaseDetailItem = ({ purchase }: { purchase: Purchase }) => {
   const details = [
     { label: '구매 날짜', value: purchase.date },
     { label: '가격', value: `${purchase.price.toLocaleString()}원` },
@@ -38,7 +38,7 @@ const PurchaseItem = ({ purchase }: { purchase: Purchase }) => {
   )
 }
 
-const CustomerPurchaseList = ({ purchases }: CustomerPurchaseListProps) => {
+const CustomerPurchaseDetailList = ({ purchases }: CustomerPurchaseDetailListProps) => {
   if (purchases.length === 0) {
     return <EmptyMessage>구매 내역이 없습니다.</EmptyMessage>
   }
@@ -46,13 +46,13 @@ const CustomerPurchaseList = ({ purchases }: CustomerPurchaseListProps) => {
   return (
     <List>
       {purchases.map((purchase) => (
-        <PurchaseItem key={`${purchase.date}-${purchase.product}`} purchase={purchase} />
+        <CustomerPurchaseDetailItem key={`${purchase.date}-${purchase.product}`} purchase={purchase} />
       ))}
     </List>
   )
 }
 
-export default CustomerPurchaseList
+export default CustomerPurchaseDetailList
 
 const EmptyMessage = styled.div`
   text-align: center;
