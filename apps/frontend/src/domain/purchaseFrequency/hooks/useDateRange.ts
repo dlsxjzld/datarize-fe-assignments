@@ -7,7 +7,9 @@ export const useDateRange = (initialFrom: string, initialTo: string) => {
   })
 
   const updateFrom = (newFrom: string) => {
-    if (!newFrom) return
+    if (!newFrom) {
+      return
+    }
 
     if (newFrom > dateRange.to) {
       setDateRange({ from: dateRange.to, to: newFrom })
@@ -18,7 +20,9 @@ export const useDateRange = (initialFrom: string, initialTo: string) => {
   }
 
   const updateTo = (newTo: string) => {
-    if (!newTo) return
+    if (!newTo) {
+      return
+    }
 
     if (newTo < dateRange.from) {
       setDateRange({ from: newTo, to: dateRange.from })
