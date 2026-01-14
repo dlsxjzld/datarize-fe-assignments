@@ -5,7 +5,15 @@ import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/com
 import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
 
 const DashBoard = () => {
-  const { dateRange, handleFromChange, handleToChange } = useDateRange('2025-10-01', '2025-12-31')
+  const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')
+
+  const handleFromChange = (value: string) => {
+    updateFrom(value)
+  }
+
+  const handleToChange = (value: string) => {
+    updateTo(value)
+  }
 
   return (
     <main>
