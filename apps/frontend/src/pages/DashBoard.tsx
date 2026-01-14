@@ -5,10 +5,13 @@ import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
 import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
 import CustomerListSection from '../domain/customer/components/CustomerListSection'
+import { Customer, useSelectedCustomer } from '../domain/customer/hooks/useSelectedCustomer'
+import { useCallback } from 'react'
 
 const DashBoard = () => {
   const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')
   const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null)
+  const { selectedCustomer, selectCustomer, clearCustomer } = useSelectedCustomer()
 
   const handleFromChange = (value: string) => {
     updateFrom(value)
@@ -23,6 +26,12 @@ const DashBoard = () => {
     // TODO: 고객 상세 화면으로 이동 또는 모달 표시
     console.log('Selected customer:', customerId)
   }, [])
+  const handleCustomerSelect = useCallback(
+    (customer: Customer) => {
+      selectCustomer(customer)
+    },
+    [selectCustomer],
+  )
 
   return (
     <main>

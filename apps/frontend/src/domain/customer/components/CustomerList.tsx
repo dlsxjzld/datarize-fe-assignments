@@ -11,7 +11,7 @@ interface Customer {
 interface CustomerListProps {
   customers: Customer[]
   isFetching: boolean
-  onCustomerSelect: (customerId: number) => void
+  onCustomerSelect: (customer: Customer) => void
 }
 
 const CustomerList = ({ customers, isFetching, onCustomerSelect }: CustomerListProps) => {
@@ -28,7 +28,7 @@ const CustomerList = ({ customers, isFetching, onCustomerSelect }: CustomerListP
         </Thead>
         <tbody>
           {customers.map((customer) => (
-            <Tr key={customer.id} onClick={() => onCustomerSelect(customer.id)} $isFetching={isFetching}>
+            <Tr key={customer.id} onClick={() => onCustomerSelect(customer)} $isFetching={isFetching}>
               <Td>{customer.id}</Td>
               <Td>{customer.name}</Td>
               <Td>{customer.count.toLocaleString()}회</Td>

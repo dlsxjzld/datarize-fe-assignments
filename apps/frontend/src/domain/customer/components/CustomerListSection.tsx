@@ -10,10 +10,11 @@ import { usePagination } from '../hooks/usePagination'
 import { useCustomers } from '../hooks/useCustomers'
 import { ErrorFallback } from '@/common/components/ErrorFallback'
 import { useMemo } from 'react'
+import { Customer } from '../hooks/useSelectedCustomer'
 
 interface CustomerListSectionProps {
   dateRange: { from: string; to: string }
-  onCustomerSelect: (customerId: number) => void
+  onCustomerSelect: (customer: Customer) => void
 }
 
 const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerListSectionProps) => {
