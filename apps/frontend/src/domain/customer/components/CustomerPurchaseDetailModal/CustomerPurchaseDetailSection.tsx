@@ -1,10 +1,10 @@
-import styled from '@emotion/styled'
 import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
+import styled from '@emotion/styled'
 import Spinner from '@/common/components/Spinner'
 import { ErrorFallback } from '@/common/components/ErrorFallback'
-import { type Customer } from '../hooks/useSelectedCustomer'
-import CustomerPurchaseContent from './CustomerPurchaseDetailContent'
+import { type Customer } from '../../hooks/useSelectedCustomer'
+import CustomerPurchaseContent from '../CustomerPurchaseDetailContent'
 
 interface CustomerPurchaseDetailSectionProps {
   customer: Customer

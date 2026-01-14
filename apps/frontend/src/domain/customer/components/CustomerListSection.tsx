@@ -1,6 +1,8 @@
+import { useMemo } from 'react'
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 import styled from '@emotion/styled'
+import { ErrorFallback } from '@/common/components/ErrorFallback'
 import CustomerList from './CustomerList'
 import CustomerListControls from './CustomerListControls'
 import Pagination from './Pagination'
@@ -8,9 +10,7 @@ import { useSort } from '../hooks/useSort'
 import { useSearch } from '../hooks/useSearch'
 import { usePagination } from '../hooks/usePagination'
 import { useCustomers } from '../hooks/useCustomers'
-import { ErrorFallback } from '@/common/components/ErrorFallback'
-import { useMemo } from 'react'
-import { Customer } from '../hooks/useSelectedCustomer'
+import { type Customer } from '../hooks/useSelectedCustomer'
 
 interface CustomerListSectionProps {
   dateRange: { from: string; to: string }

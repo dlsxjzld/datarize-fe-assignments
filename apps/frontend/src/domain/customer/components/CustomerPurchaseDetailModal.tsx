@@ -1,7 +1,7 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 import Modal from '@/common/components/Modal'
 import ModalHeader from '@/common/components/ModalHeader'
-import { Customer } from '../hooks/useSelectedCustomer'
+import { type Customer } from '../hooks/useSelectedCustomer'
 
 import { useEscapeKeyDown } from '@/common/hooks/useEscapeKeyDown'
 import CustomerPurchaseDetailSection from './CustomerPurchaseDetailSection'

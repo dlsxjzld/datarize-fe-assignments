@@ -1,5 +1,5 @@
 import { useCustomerPurchases } from '../hooks/useCustomerPurchases'
-import { Customer } from '../hooks/useSelectedCustomer'
+import { type Customer } from '../hooks/useSelectedCustomer'
 import CustomerPurchaseList from './CustomerPurchaseDetailList'
 
 interface CustomerPurchaseContentProps {

@@ -1,14 +1,13 @@
+import { useCallback } from 'react'
 import styled from '@emotion/styled'
+import { useModal } from '@/common/hooks/useModal'
 import DateRangePicker from '../domain/purchaseFrequency/components/DateRangePicker'
 import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
 import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
 import CustomerListSection from '../domain/customer/components/CustomerListSection'
-
-import { Customer, useSelectedCustomer } from '../domain/customer/hooks/useSelectedCustomer'
-import { useModal } from '@/common/hooks/useModal'
-import { useCallback } from 'react'
-import CustomerPurchaseDetailModal from '@/domain/customer/components/CustomerPurchaseDetailModal'
+import CustomerPurchaseDetailModal from '../domain/customer/components/CustomerPurchaseDetailModal'
+import { type Customer, useSelectedCustomer } from '../domain/customer/hooks/useSelectedCustomer'
 
 const DashBoard = () => {
   const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')
