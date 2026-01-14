@@ -9,6 +9,7 @@ import { useSearch } from '../hooks/useSearch'
 import { usePagination } from '../hooks/usePagination'
 import { useCustomers } from '../hooks/useCustomers'
 import { ErrorFallback } from '@/common/components/ErrorFallback'
+import { useMemo } from 'react'
 
 interface CustomerListSectionProps {
   dateRange: { from: string; to: string }
@@ -58,11 +59,15 @@ export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerLis
     return 'ID 오름차순'
   }
 
-  const customers = customersData?.customers ?? []
-  const sortedCustomers = [...customers]
-  if (sortBy === 'id-asc') {
-    sortedCustomers.sort((a, b) => a.id - b.id)
-  }
+  const customers = useMemo(() => customersData?.customers ?? [], [customersData])
+  const sortedCustomers = useMemo(() => {
+    const sorted = [...customers]
+    if (sortBy === 'id-asc') {
+      sorted.sort((a, b) => a.id - b.id)
+    }
+
+    return sorted
+  }, [customers, sortBy])
 
   return (
     <>

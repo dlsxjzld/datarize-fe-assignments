@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from '@emotion/styled'
 
 interface Customer {
@@ -40,7 +41,7 @@ const CustomerList = ({ customers, isFetching, onCustomerSelect }: CustomerListP
   )
 }
 
-export default CustomerList
+export default memo(CustomerList)
 
 const Container = styled.div<{ $isFetching: boolean }>`
   transition: opacity 0.2s;

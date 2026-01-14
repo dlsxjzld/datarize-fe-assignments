@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import DateRangePicker from '../domain/purchaseFrequency/components/DateRangePicker'
 import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
@@ -18,11 +18,11 @@ const DashBoard = () => {
     updateTo(value)
   }
 
-  const handleCustomerSelect = (customerId: number) => {
+  const handleCustomerSelect = useCallback((customerId: number) => {
     setSelectedCustomerId(customerId)
     // TODO: 고객 상세 화면으로 이동 또는 모달 표시
     console.log('Selected customer:', customerId)
-  }
+  }, [])
 
   return (
     <main>
