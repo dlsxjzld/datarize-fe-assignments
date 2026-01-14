@@ -55,11 +55,14 @@ const DashBoard = () => {
 export default DashBoard
 
 const Header = styled.header`
+  position: sticky;
+  top: 0;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
+
+  padding: 16px 24px;
   border-bottom: 2px solid #e5e7eb;
 
   h1 {
