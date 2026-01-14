@@ -49,6 +49,7 @@ const Container = styled.div<{ $isFetching: boolean }>`
 
 export const Table = styled.table`
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   background-color: white;
   border-radius: 8px;
