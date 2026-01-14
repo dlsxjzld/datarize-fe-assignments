@@ -19,7 +19,7 @@ export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerLis
   const { reset } = useQueryErrorResetBoundary()
 
   const { sortBy, sortDirection, toggleSort } = useSort()
-  const { searchName, updateSearch } = useSearch('')
+  const { searchName, debouncedSearchName, updateSearch } = useSearch('')
   const { page, limit, changePage, resetPage } = usePagination(1, 20)
 
   const {
@@ -28,7 +28,7 @@ export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerLis
     isLoading,
   } = useCustomers({
     sortBy: sortDirection,
-    name: searchName,
+    name: debouncedSearchName,
     page,
     limit,
     from: dateRange.from,
