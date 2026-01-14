@@ -26,33 +26,43 @@ const DashBoard = () => {
 
   return (
     <main>
-      <Header>
-        <h1>쇼핑몰 구매 데이터 대시보드</h1>
-        <DateRangePicker
-          from={dateRange.from}
-          to={dateRange.to}
-          onFromChange={handleFromChange}
-          onToChange={handleToChange}
-        />
-      </Header>
+      <Layout>
+        <Header>
+          <h1>쇼핑몰 구매 데이터 대시보드</h1>
+          <DateRangePicker
+            from={dateRange.from}
+            to={dateRange.to}
+            onFromChange={handleFromChange}
+            onToChange={handleToChange}
+          />
+        </Header>
 
-      <Container>
-        <SectionHeader>
-          <Title>가격대별 구매 빈도</Title>
-          <PurchaseFrequencyCSVDownloadSection from={dateRange.from} to={dateRange.to} />
-        </SectionHeader>
-        <PurchaseFrequencySection from={dateRange.from} to={dateRange.to} />
-      </Container>
+        <Container>
+          <SectionHeader>
+            <Title>가격대별 구매 빈도</Title>
+            <PurchaseFrequencyCSVDownloadSection from={dateRange.from} to={dateRange.to} />
+          </SectionHeader>
+          <PurchaseFrequencySection from={dateRange.from} to={dateRange.to} />
+        </Container>
 
-      <Container>
-        <Title>고객 목록</Title>
-        <CustomerListSection dateRange={dateRange} onCustomerSelect={handleCustomerSelect} />
-      </Container>
+        <Container>
+          <Title>고객 목록</Title>
+          <CustomerListSection dateRange={dateRange} onCustomerSelect={handleCustomerSelect} />
+        </Container>
+      </Layout>
     </main>
   )
 }
 
 export default DashBoard
+
+const Layout = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 0 48px;
+  box-sizing: border-box;
+`
 
 const Header = styled.header`
   position: sticky;
@@ -62,9 +72,9 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  padding: 16px 24px;
+  padding: 24px 0;
   border-bottom: 2px solid #e5e7eb;
-
+  box-sizing: border-box;
   h1 {
     font-size: 28px;
     font-weight: 700;
