@@ -32,9 +32,14 @@ export const useDateRange = (initialFrom: string, initialTo: string) => {
     setDateRange({ from: dateRange.from, to: newTo })
   }
 
+  const resetDateRange = () => {
+    setDateRange({ from: initialFrom, to: initialTo })
+  }
+
   return {
     dateRange,
     updateFrom,
     updateTo,
+    resetDateRange,
   }
 }

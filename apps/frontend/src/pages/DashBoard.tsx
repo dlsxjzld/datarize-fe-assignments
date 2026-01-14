@@ -10,7 +10,7 @@ import CustomerPurchaseDetailModal from '../domain/customer/components/CustomerP
 import { type Customer, useSelectedCustomer } from '../domain/customer/hooks/useSelectedCustomer'
 
 const DashBoard = () => {
-  const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')
+  const { dateRange, updateFrom, updateTo, resetDateRange } = useDateRange('2025-10-01', '2025-12-31')
   const { isOpen, open, close } = useModal()
   const { selectedCustomer, selectCustomer, clearCustomer } = useSelectedCustomer()
 
@@ -20,6 +20,10 @@ const DashBoard = () => {
 
   const handleToChange = (value: string) => {
     updateTo(value)
+  }
+
+  const handleResetDateRange = () => {
+    resetDateRange()
   }
 
   const handleCustomerSelect = useCallback(
@@ -45,6 +49,7 @@ const DashBoard = () => {
             to={dateRange.to}
             onFromChange={handleFromChange}
             onToChange={handleToChange}
+            onReset={handleResetDateRange}
           />
         </Header>
 
