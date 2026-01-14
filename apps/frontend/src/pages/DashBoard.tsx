@@ -1,16 +1,18 @@
 import styled from '@emotion/styled'
-import { useState, useCallback } from 'react'
 import DateRangePicker from '../domain/purchaseFrequency/components/DateRangePicker'
 import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
 import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
 import CustomerListSection from '../domain/customer/components/CustomerListSection'
+
 import { Customer, useSelectedCustomer } from '../domain/customer/hooks/useSelectedCustomer'
+import { useModal } from '@/common/hooks/useModal'
 import { useCallback } from 'react'
+import CustomerPurchaseDetailModal from '../domain/customer/components/CustomerPurchaseDetailModal'
 
 const DashBoard = () => {
   const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')
-  const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null)
+  const { isOpen, open, close } = useModal()
   const { selectedCustomer, selectCustomer, clearCustomer } = useSelectedCustomer()
 
   const handleFromChange = (value: string) => {
@@ -21,17 +23,18 @@ const DashBoard = () => {
     updateTo(value)
   }
 
-  const handleCustomerSelect = useCallback((customerId: number) => {
-    setSelectedCustomerId(customerId)
-    // TODO: 고객 상세 화면으로 이동 또는 모달 표시
-    console.log('Selected customer:', customerId)
-  }, [])
   const handleCustomerSelect = useCallback(
     (customer: Customer) => {
       selectCustomer(customer)
+      open()
     },
-    [selectCustomer],
+    [selectCustomer, open],
   )
+
+  const handleCloseModal = useCallback(() => {
+    close()
+    clearCustomer()
+  }, [close, clearCustomer])
 
   return (
     <main>
@@ -58,6 +61,13 @@ const DashBoard = () => {
           <Title>고객 목록</Title>
           <CustomerListSection dateRange={dateRange} onCustomerSelect={handleCustomerSelect} />
         </Container>
+
+        <CustomerPurchaseDetailModal
+          isOpen={isOpen}
+          customer={selectedCustomer}
+          dateRange={dateRange}
+          onClose={handleCloseModal}
+        />
       </Layout>
     </main>
   )
