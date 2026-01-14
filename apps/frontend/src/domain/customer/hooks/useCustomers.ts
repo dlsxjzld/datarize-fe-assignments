@@ -5,7 +5,7 @@ export const useCustomers = (params: FetchCustomersParams) => {
   return useQuery({
     queryKey: ['customers', ...Object.values(params)],
     queryFn: () => fetchCustomers(params),
-    staleTime: 1000 * 60 * 10,
+    staleTime: 10 * 60 * 1000,
     placeholderData: keepPreviousData,
   })
 }

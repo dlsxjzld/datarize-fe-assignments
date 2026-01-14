@@ -11,5 +11,6 @@ export const useCustomerPurchases = ({ customerId, from, to }: UseCustomerPurcha
   return useSuspenseQuery({
     queryKey: ['customerPurchases', customerId, from, to],
     queryFn: () => fetchCustomerPurchases({ customerId, from, to }),
+    staleTime: 10 * 60 * 1000,
   })
 }

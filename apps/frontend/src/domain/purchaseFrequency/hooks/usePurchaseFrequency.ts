@@ -5,6 +5,6 @@ export const usePurchaseFrequency = ({ from, to }: DateRange) => {
   return useSuspenseQuery({
     queryKey: ['purchaseFrequency', from, to],
     queryFn: () => fetchPurchaseFrequency({ from, to }),
-    staleTime: 10 * 60 * 1000,
+    staleTime: 20 * 60 * 1000,
   })
 }
