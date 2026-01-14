@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
+import { useState } from 'react'
 import DateRangePicker from '../domain/purchaseFrequency/components/DateRangePicker'
 import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
 import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
+import { CustomerListSection } from '../domain/customer/components/CustomerListSection'
 
 const DashBoard = () => {
   const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')
+  const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null)
 
   const handleFromChange = (value: string) => {
     updateFrom(value)
@@ -13,6 +16,12 @@ const DashBoard = () => {
 
   const handleToChange = (value: string) => {
     updateTo(value)
+  }
+
+  const handleCustomerSelect = (customerId: number) => {
+    setSelectedCustomerId(customerId)
+    // TODO: 고객 상세 화면으로 이동 또는 모달 표시
+    console.log('Selected customer:', customerId)
   }
 
   return (
@@ -26,12 +35,18 @@ const DashBoard = () => {
           onToChange={handleToChange}
         />
       </Header>
+
       <Container>
         <SectionHeader>
           <Title>가격대별 구매 빈도</Title>
           <PurchaseFrequencyCSVDownloadSection from={dateRange.from} to={dateRange.to} />
         </SectionHeader>
         <PurchaseFrequencySection from={dateRange.from} to={dateRange.to} />
+      </Container>
+
+      <Container>
+        <Title>고객 목록</Title>
+        <CustomerListSection dateRange={dateRange} onCustomerSelect={handleCustomerSelect} />
       </Container>
     </main>
   )
