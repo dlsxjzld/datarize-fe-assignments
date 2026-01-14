@@ -82,7 +82,13 @@ export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerLis
       ) : (
         <>
           <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
-            <CustomerList customers={sortedCustomers} isFetching={isFetching} onCustomerSelect={onCustomerSelect} />
+            {sortedCustomers.length === 0 ? (
+              <EmptyMessage>
+                {debouncedSearchName.length > 0 ? '검색 결과가 없습니다.' : '등록된 고객이 없습니다.'}
+              </EmptyMessage>
+            ) : (
+              <CustomerList customers={sortedCustomers} isFetching={isFetching} onCustomerSelect={onCustomerSelect} />
+            )}
           </ErrorBoundary>
           <Pagination
             currentPage={page}
@@ -99,6 +105,13 @@ export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerLis
 
 const LoadingMessage = styled.div`
   padding: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+`
+
+const EmptyMessage = styled.div`
+  padding: 16px;
   text-align: center;
   font-size: 14px;
   color: #6b7280;
