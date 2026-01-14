@@ -4,7 +4,7 @@ import DateRangePicker from '../domain/purchaseFrequency/components/DateRangePic
 import { PurchaseFrequencySection } from '../domain/purchaseFrequency/components/PurchaseFrequencySection'
 import PurchaseFrequencyCSVDownloadSection from '../domain/purchaseFrequency/components/PurchaseFrequencyCSVDownloadSection'
 import { useDateRange } from '../domain/purchaseFrequency/hooks/useDateRange'
-import { CustomerListSection } from '../domain/customer/components/CustomerListSection'
+import CustomerListSection from '../domain/customer/components/CustomerListSection'
 
 const DashBoard = () => {
   const { dateRange, updateFrom, updateTo } = useDateRange('2025-10-01', '2025-12-31')

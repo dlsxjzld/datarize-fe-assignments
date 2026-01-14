@@ -16,7 +16,7 @@ interface CustomerListSectionProps {
   onCustomerSelect: (customerId: number) => void
 }
 
-export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerListSectionProps) => {
+const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerListSectionProps) => {
   const { reset } = useQueryErrorResetBoundary()
 
   const { sortBy, sortDirection, toggleSort } = useSort()
@@ -102,6 +102,8 @@ export const CustomerListSection = ({ dateRange, onCustomerSelect }: CustomerLis
     </>
   )
 }
+
+export default CustomerListSection
 
 const LoadingMessage = styled.div`
   padding: 40px;
