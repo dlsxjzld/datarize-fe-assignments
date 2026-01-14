@@ -3,6 +3,7 @@ import Modal from '@/common/components/Modal'
 import ModalHeader from '@/common/components/ModalHeader'
 import { Customer } from '../../hooks/useSelectedCustomer'
 import CustomerPurchaseDetailSection from './CustomerPurchaseDetailSection'
+import { useEscapeKeyDown } from '@/common/hooks/useEscapeKeyDown'
 
 interface CustomerPurchaseDetailModalProps {
   isOpen: boolean
@@ -13,6 +14,8 @@ interface CustomerPurchaseDetailModalProps {
 
 const CustomerPurchaseDetailModal = ({ isOpen, customer, dateRange, onClose }: CustomerPurchaseDetailModalProps) => {
   const { reset } = useQueryErrorResetBoundary()
+
+  useEscapeKeyDown(onClose, isOpen)
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
