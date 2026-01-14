@@ -72,3 +72,43 @@ export const fetchCustomers = async (params: FetchCustomersParams): Promise<Cust
     pagination: normalizePagination(response.pagination),
   }
 }
+
+export interface CustomerPurchaseServer {
+  date: string
+  quantity: number
+  product: string
+  price: number
+  imgSrc: string
+}
+
+export interface CustomerPurchaseClient {
+  date: string
+  quantity: number
+  product: string
+  price: number
+  imgSrc: string
+}
+
+export interface FetchCustomerPurchasesParams {
+  customerId: number
+  from?: string
+  to?: string
+}
+
+const normalizePurchase = (purchases: CustomerPurchaseServer[]): CustomerPurchaseClient[] => {
+  return purchases.map((purchase) => ({
+    ...purchase,
+  }))
+}
+
+export const fetchCustomerPurchases = async ({
+  customerId,
+  ...rest
+}: FetchCustomerPurchasesParams): Promise<CustomerPurchaseClient[]> => {
+  const response = await apiGet<CustomerPurchaseServer[]>({
+    endpoint: `/api/customers/${customerId}/purchases`,
+    params: { ...rest },
+  })
+
+  return normalizePurchase(response)
+}
